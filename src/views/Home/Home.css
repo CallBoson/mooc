@@ -1,0 +1,41 @@
+.el-header, .el-footer {
+	color: #333;
+	text-align: center;
+}
+
+.el-footer{
+	background-color: #B3C0D1;
+	min-height: 120px;
+}
+
+.steps{
+	margin: 20px 0;
+}
+
+.el-row{
+	display: flex;
+	align-items: center;
+}
+
+.el-main {
+	background-color: #E9EEF3;
+	color: #333;
+	text-align: center;
+	height: 160px;
+}
+
+.logo-text{
+	color: #909399;
+}
+
+.el-button--primary.login-btn{
+	background: linear-gradient(
+	90deg,#0059c5,#49d9e3);
+	border: none;
+}
+
+.el-button--primary.login-btn:hover{
+	opacity: 0.8;
+	background: linear-gradient(
+	90deg,#0059c5,#49d9e3);
+}
