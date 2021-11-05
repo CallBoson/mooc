@@ -4,7 +4,7 @@
 	width: 100%;
 }
 
-.link{
+.register-link{
 	display: flex;
-	justify-content: space-between;
+	justify-content: end;
 }

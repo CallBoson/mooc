@@ -39,3 +39,9 @@
 	background: linear-gradient(
 	90deg,#0059c5,#49d9e3);
 }
+
+.userInfo-box{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

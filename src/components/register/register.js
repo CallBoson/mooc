@@ -1,9 +1,8 @@
 /* eslint-disable */
 export default {
-	name: 'Login',
+	name: 'Register',
 	data: () => ({
 		show: false,
-		mode: 'pwd', //pwd:密码 auth:验证码
 		form: {
 			phone: '',
 			password: '',
@@ -15,7 +14,7 @@ export default {
 		submitForm(formName) {
 			this.$refs[formName].validate((valid) => {
 				if (valid) {
-					this.mode == 'pwd' ? this.login() : this.authLogin();
+					this.register();
 					
 				} else {
 					console.log('error submit!!');
@@ -23,25 +22,18 @@ export default {
 				}
 			});
 		},
-		loginSuccessHandler(res) {
-			this.show = false;
-			this.$message({
-			  message: '登录成功!',
-			  type: 'success'
-			});
-			localStorage.setItem('token', res.data.token);
-			setTimeout(() => {
-				location.reload();
-			}, 1500)
-		},
-		login() {
-			this.services.login(this.form.phone, this.form.password).then(res => {
-				this.loginSuccessHandler(res);
-			})
-		},
-		authLogin(){
-			this.services.authLogin(this.form.auth, this.form.phone).then(res => {
-				this.loginSuccessHandler(res);
+		register() {
+			this.services.register(this.form.auth, this.form.password, this.form.phone).then(res => {
+				this.$message({
+				  message: '注册成功!',
+				  type: 'success'
+				});
+				this.toLogin({
+					form: {
+						phone: this.form.phone,
+						password: this.form.password
+					}
+				});
 			})
 		},
 		getCode(){
@@ -62,16 +54,9 @@ export default {
 				}, 1000)
 			})
 		},
-		switchMode(){
-			if(this.mode == 'pwd'){
-				this.mode = 'auth'
-			}else{
-				this.mode = 'pwd';
-			}
-		},
-		toRegister(){
+		toLogin(form){
 			this.show = false;
-			this.$register()
+			this.$login(form);
 		}
 	}
 }
